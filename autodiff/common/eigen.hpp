@@ -31,6 +31,8 @@
 
 // Eigen includes
 #include <Eigen/Core>
+#include <Eigen/src/Core/IndexedView.h>
+#include <Eigen/src/Core/util/IndexedViewHelper.h>
 
 // autodiff includes
 #include <autodiff/common/vectortraits.hpp>
@@ -102,7 +104,7 @@ struct VectorTraits<Eigen::VectorBlock<VectorType, Size>>
 #if EIGEN_VERSION_AT_LEAST(3, 3, 90)
 
     template<typename VectorType, typename IndicesType>
-    struct VectorTraits<Eigen::IndexedView<VectorType, IndicesType, Eigen::internal::SingleRange>>
+struct VectorTraits<Eigen::IndexedView<VectorType, IndicesType, Eigen::internal::SingleRange>>
     {
         using ValueType = typename PlainType<VectorType>::Scalar;
 
